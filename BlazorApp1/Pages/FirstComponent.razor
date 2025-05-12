@@ -1,0 +1,29 @@
+﻿@page "/First"
+
+<h3>FirstComponent</h3>
+
+<input type="button" value="Click Me" @onclick='()=>ShowMsg("hiiiiii")' class="btn btn-success"/>
+<h2 style="color:red">@Msg</h2>
+
+<h3 style="color:blue">One Way Binding from C# == HTML </h3>
+<input class="form form-control" value="@Msg"/>
+<hr />
+<h3 style="color:blue">Two Way Binding C# == HTML && HTML == C#</h3>
+<input class="form form-control" @bind-value="@Msg" /> <!--input tags only-->
+<input class="form form-control" @bind="@Msg" />   <!--input & Select tag-->
+
+
+<hr />
+<h3 style="color:blue">Two Way Binding With Update</h3>
+<input class="form form-control" @bind-value="@Msg" @bind-value:event="oninput" />
+<input class="form form-control" @bind="@Msg" @bind:event="oninput"/>
+
+
+@code {
+    public string Msg { get; set; } = "Hello FRom My First Component";
+    public void ShowMsg(string xyz)
+    {
+        Msg = "New Msg Texxt";
+        Console.WriteLine("Hiiiiiiiiii from C# :)");//browser console
+    }
+}
