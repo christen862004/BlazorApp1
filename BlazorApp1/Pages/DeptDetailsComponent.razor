@@ -1,0 +1,15 @@
+﻿@page "/Dept/Details/{id:int}/{name?}" 
+<PageTitle>Dept Details</PageTitle>
+<h3>DeptDetailsComponent</h3>
+<h1>Id = @id</h1>
+<h2>@name</h2>
+
+@code {
+    //1) Decalre Property with the same name of route prameter
+    //2) Decorate this property with [PAramtere] arrtibute
+    [Parameter]
+    public int id { get; set; } 
+
+    [Parameter]
+    public string name { get; set; }
+}

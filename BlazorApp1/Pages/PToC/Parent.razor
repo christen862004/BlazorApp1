@@ -1,0 +1,10 @@
+﻿@page "/P1"
+<h3>Parent</h3>
+<input type="text" class="form form-control" @bind-value="LocalMsg" />
+
+<Child Msg="@LocalMsg"></Child>
+<hr />
+<Child></Child>
+@code {
+    public string LocalMsg { get; set; }
+}

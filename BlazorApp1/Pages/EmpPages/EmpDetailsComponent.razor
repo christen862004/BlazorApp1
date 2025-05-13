@@ -1,0 +1,32 @@
+﻿@page "/Emps/Details/{id:int}"
+@* @inject IServices<Employee> EmpService *@
+
+<PageTitle>Details</PageTitle>
+<h3>EmpDetailsComponent</h3>
+@if (Employee != null)
+{
+    <h4>@Employee.Name</h4>
+    <h4>@Employee.Address</h4>
+    <h4>@Employee.Salary</h4>
+}else
+{
+    <h4>Invalid ID</h4>
+}
+<a href="/Emps">Back to List</a>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+
+    //Solid (DIP) dotn create ask (Service Provider)
+    [Inject]//using C#
+    public IServices<Employee> EmpService { get; set; }
+
+    public Employee Employee { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Employee = EmpService.GetByID(id);
+        base.OnInitialized();
+    }
+}

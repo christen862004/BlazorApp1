@@ -1,0 +1,41 @@
+﻿@page "/Emps/Edit/{id:int}"
+
+<h3>EmpEditComponent</h3>
+@if (EmpObj != null)
+{
+    <h5 style="border:2px solid red" >@EmpObj</h5>
+    <br />
+
+    <EditForm Model="EmpObj" OnSubmit="Save">
+        <div>
+            <label>Name</label>
+            <InputText class="form form-control" @bind-Value="EmpObj.Name"></InputText>
+        </div>
+        <div>
+            <label>Address</label>
+            <InputText class="form form-control" @bind-Value="EmpObj.Address"></InputText>
+        </div>
+        <div>
+            <label>Salary</label>
+            <InputNumber class="form form-control" @bind-Value="EmpObj.Salary"></InputNumber>
+        </div>
+        <div>
+            <label>Deptartment</label>
+            @* <InputNumber class="form form-control" @bind-Value="EmpObj.DeptartmentId"></InputNumber> *@
+            <InputSelect class="form form-control" @bind-Value="EmpObj.DeptartmentId">
+                @foreach (var deptItem in DeptList)
+                {
+                    <option value="@deptItem.Id">@deptItem.Name</option>
+                }
+            </InputSelect>
+        </div>
+        <br />
+        <input type="submit" class="btn btn-success" value="Save"/>
+    </EditForm>
+}
+else
+{
+    <h3>Invlaid ID</h3>
+}
+
+

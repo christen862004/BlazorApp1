@@ -1,0 +1,13 @@
+﻿<div style="margin:10px;padding:5px;border:5px solid blue">
+    <h3>Child</h3>
+    <h4>@ID</h4>
+    <h5>@Name</h5>
+</div>
+
+@code {
+    [CascadingParameter(Name ="DID")]
+    public int ID { get; set; }
+
+    [CascadingParameter(Name="Name")]
+    public string Name { get; set; }
+}

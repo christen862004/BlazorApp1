@@ -1,0 +1,33 @@
+﻿@page "/life/{id:int}"
+<h3>LifeCycleComponent</h3>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+
+    public LifeCycleComponent()
+    {
+        Console.WriteLine($"Constructor Id={id}");
+    }
+    public override Task SetParametersAsync(ParameterView parameters)
+    {
+        // loading paremetr value | service inject create
+        Console.WriteLine($"SetParametersAsync Id={id}");
+
+        return base.SetParametersAsync(parameters);//collect
+    }
+
+    protected override void OnInitialized()
+    {
+        Console.WriteLine($"OnInitialized Id={id}");
+       // id = 80;
+        //Console.WriteLine($"OnInitialized Id={id}");
+        base.OnInitialized();
+    }
+    protected override void OnParametersSet()
+    {
+        Console.WriteLine($"OnParametersSet Id={id}");
+
+        base.OnParametersSet();
+    }
+}

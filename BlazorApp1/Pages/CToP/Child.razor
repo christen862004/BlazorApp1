@@ -1,0 +1,20 @@
+﻿<div style="margin:10px;padding:5px;border:5px solid blue">
+    <h3>Child</h3>
+    
+    <h4>@Message</h4>
+
+    <input type="button" value="Change Msg" class="btn btn-success" @onclick="Change"/>
+</div>
+@code {
+    public string Message { get; set; } = "Hello";
+
+    [Parameter]
+    public EventCallback<string> MessageChangeEvent { get; set; }
+
+    public async void Change()
+    {
+        Message += "Hi\t";
+        await MessageChangeEvent.InvokeAsync(Message);//fire
+        Console.WriteLine(Message);
+    }
+}

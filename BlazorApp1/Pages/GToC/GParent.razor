@@ -1,0 +1,14 @@
+﻿@page "/GP1"
+<h3>GParent</h3>
+<CascadingValue Name="DID" Value="DeptId">
+    @* <CascadingValue Name="Name" Value="@("Hello")"> *@
+    <CascadingValue Name="Name" Value="DeptName">
+        <Parent></Parent>
+    </CascadingValue>
+</CascadingValue>
+
+@code {
+    public int DeptId { get; set; } = 1;
+    public string DeptName { get; set; } = "SD";
+
+}

@@ -1,0 +1,14 @@
+﻿@page "/P2"
+<h3>Parent</h3>
+
+<Child MessageChangeEvent="MessageHandel"></Child>
+<h4>@LocalMsg</h4>
+
+@code {
+
+    public string LocalMsg { get; set; }
+    public void MessageHandel(string ChildMsg)
+    {
+        LocalMsg = ChildMsg;
+    }
+}
