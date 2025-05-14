@@ -6,18 +6,28 @@
     <h5 style="border:2px solid red" >@EmpObj</h5>
     <br />
 
-    <EditForm Model="EmpObj" OnSubmit="Save">
+    <EditForm Model="EmpObj" OnValidSubmit="Save" OnInvalidSubmit="NoSave">
+        <!--
+            built in Component when i used it inside EditForm
+            start Client Side Validate Model
+        -->
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <ValidationSummary></ValidationSummary>
+
         <div>
             <label>Name</label>
             <InputText class="form form-control" @bind-Value="EmpObj.Name"></InputText>
+            <ValidationMessage For="()=>EmpObj.Name"></ValidationMessage>
         </div>
         <div>
             <label>Address</label>
             <InputText class="form form-control" @bind-Value="EmpObj.Address"></InputText>
+            <ValidationMessage For="()=>EmpObj.Address"></ValidationMessage>
         </div>
         <div>
             <label>Salary</label>
             <InputNumber class="form form-control" @bind-Value="EmpObj.Salary"></InputNumber>
+            <ValidationMessage For="()=>EmpObj.Salary"></ValidationMessage>
         </div>
         <div>
             <label>Deptartment</label>
@@ -28,6 +38,8 @@
                     <option value="@deptItem.Id">@deptItem.Name</option>
                 }
             </InputSelect>
+            <ValidationMessage For="()=>EmpObj.DeptartmentId"></ValidationMessage>
+
         </div>
         <br />
         <input type="submit" class="btn btn-success" value="Save"/>
